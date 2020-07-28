@@ -103,7 +103,7 @@ export class WebChannelConnection extends RestConnection {
     request: Req,
     token: Token | null
   ): Promise<Resp> {
-    const url = this.makeUrl(rpcName);
+    const url = this.makeUrl(rpcName, request);
 
     return new Promise((resolve: Resolver<Resp>, reject: Rejecter) => {
       const xhr = new XhrIo();
