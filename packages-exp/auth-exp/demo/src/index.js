@@ -56,6 +56,9 @@ import {
   getMultiFactorResolver,
   OAuthProvider,
   GoogleAuthProvider,
+  FacebookAuthProvider,
+  TwitterAuthProvider,
+  GithubAuthProvider,
   signInWithPopup,
   linkWithPopup,
   reauthenticateWithPopup,
@@ -1220,15 +1223,15 @@ function onPopupRedirectProviderClick(_event) {
       case 'google.com':
         provider = new GoogleAuthProvider();
         break;
-      // case 'facebook.com':
-      //   provider = new FacebookAuthProvider();
-      //   break;
-      // case 'github.com':
-      //   provider = new GithubAuthProvider();
-      //   break;
-      // case 'twitter.com':
-      //   provider = new TwitterAuthProvider();
-      //   break;
+      case 'facebook.com':
+        provider = new FacebookAuthProvider();
+        break;
+      case 'github.com':
+        provider = new GithubAuthProvider();
+        break;
+      case 'twitter.com':
+        provider = new TwitterAuthProvider();
+        break;
     default:
       return;
   }
