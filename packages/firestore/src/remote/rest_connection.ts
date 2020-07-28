@@ -144,7 +144,7 @@ export abstract class RestConnection implements Connection {
     token: Token | null
   ): Stream<Req, Resp>;
 
-  private makeUrl<Req>(rpcName: string, req: Req): string {
+  makeUrl<Req>(rpcName: string, req: Req): string {
     const urlRpcName = RPC_NAME_URL_MAPPING[rpcName];
     debugAssert(
       urlRpcName !== undefined,
