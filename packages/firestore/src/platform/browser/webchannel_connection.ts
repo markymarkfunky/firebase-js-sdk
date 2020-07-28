@@ -49,6 +49,7 @@ import { logDebug, logWarn } from '../../util/log';
 import { Indexable } from '../../util/misc';
 import { Rejecter, Resolver } from '../../util/promise';
 import { StringMap } from '../../util/types';
+import {RestConnection} from "../../remote/rest_connection";
 
 const LOG_TAG = 'Connection';
 
@@ -71,15 +72,11 @@ const X_GOOG_API_CLIENT_VALUE = 'gl-js/ fire/' + SDK_VERSION;
 
 const XHR_TIMEOUT_SECS = 15;
 
-export class WebChannelConnection implements Connection {
-  private readonly databaseId: DatabaseId;
-  private readonly baseUrl: string;
+export class WebChannelConnection extends RestConnection {
   private readonly forceLongPolling: boolean;
 
   constructor(info: DatabaseInfo) {
-    this.databaseId = info.databaseId;
-    const proto = info.ssl ? 'https' : 'http';
-    this.baseUrl = proto + '://' + info.host;
+    super(info);
     this.forceLongPolling = info.forceLongPolling;
   }
 
@@ -87,7 +84,7 @@ export class WebChannelConnection implements Connection {
    * Modifies the headers for a request, adding any authorization token if
    * present and any additional headers for the request.
    */
-  private modifyHeadersForRequest(
+  protected modifyHeadersForRequest(
     headers: StringMap,
     token: Token | null
   ): void {
