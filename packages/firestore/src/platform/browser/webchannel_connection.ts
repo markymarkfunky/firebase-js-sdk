@@ -283,7 +283,7 @@ export class WebChannelConnection implements Connection {
     }
 
     const url = urlParts.join('');
-    logDebug(LOG_TAG, 'Creating WebChannel: ' + url + ' ' + request);
+    logDebug(LOG_TAG, 'Creating WebChannel: ' + url, request);
     const channel = webchannelTransport.createWebChannel(url, request);
 
     // WebChannel supports sending the first message with the handshake - saving

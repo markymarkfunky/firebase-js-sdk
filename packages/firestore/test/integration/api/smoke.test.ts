@@ -118,7 +118,8 @@ apiDescribe('Smoke Test', (persistence: boolean) => {
     );
   });
 
-  it('can get collection query', () => {
+  // eslint-disable-next-line no-restricted-properties
+  it.only('can get collection query', () => {
     const testDocs = {
       '1': {
         name: 'Patryk',
