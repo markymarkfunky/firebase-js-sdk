@@ -35,9 +35,9 @@ import {
 } from '@firebase/util';
 
 import { Token } from '../../api/credentials';
-import { DatabaseId, DatabaseInfo } from '../../core/database_info';
+import {  DatabaseInfo } from '../../core/database_info';
 import { SDK_VERSION } from '../../core/version';
-import { Connection, Stream } from '../../remote/connection';
+import { Stream } from '../../remote/connection';
 import {
   mapCodeFromRpcStatus,
   mapCodeFromHttpResponseErrorStatus
