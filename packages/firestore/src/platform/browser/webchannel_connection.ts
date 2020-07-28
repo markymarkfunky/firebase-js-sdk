@@ -79,24 +79,6 @@ export class WebChannelConnection extends RestConnection {
     this.forceLongPolling = info.forceLongPolling;
   }
 
-  /**
-   * Modifies the headers for a request, adding any authorization token if
-   * present and any additional headers for the request.
-   */
-  protected modifyHeadersForRequest(
-    headers: StringMap,
-    token: Token | null
-  ): void {
-    if (token) {
-      for (const header in token.authHeaders) {
-        if (token.authHeaders.hasOwnProperty(header)) {
-          headers[header] = token.authHeaders[header];
-        }
-      }
-    }
-    headers['X-Goog-Api-Client'] = X_GOOG_API_CLIENT_VALUE;
-  }
-
   invokeRPC<Req, Resp>(
     rpcName: string,
     request: Req,
