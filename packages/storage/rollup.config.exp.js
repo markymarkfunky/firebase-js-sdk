@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright 2018 Google Inc.
+ * Copyright 2018 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,10 +19,11 @@ import json from 'rollup-plugin-json';
 import typescriptPlugin from 'rollup-plugin-typescript2';
 import typescript from 'typescript';
 import pkg from './package.json';
+import path from 'path';
 
 const deps = Object.keys(
   Object.assign({}, pkg.peerDependencies, pkg.dependencies)
-);
+).concat('@firebase/app-exp');
 /**
  * ES5 Builds
  */
@@ -35,13 +36,17 @@ const es5BuildPlugins = [
 
 const es5Builds = [
   {
-    input: 'index.ts',
-    output: [
-      { file: pkg.main, format: 'cjs', sourcemap: true },
-      { file: pkg.module, format: 'es', sourcemap: true }
-    ],
+    input: './exp/index.ts',
+    output: {
+      file: path.resolve('./exp', pkg.main),
+      format: 'cjs',
+      sourcemap: true
+    },
     plugins: es5BuildPlugins,
-    external: id => deps.some(dep => id === dep || id.startsWith(`${dep}/`))
+    external: id => deps.some(dep => id === dep || id.startsWith(`${dep}/`)),
+    treeshake: {
+      moduleSideEffects: false
+    }
   }
 ];
 
@@ -62,15 +67,19 @@ const es2017BuildPlugins = [
 
 const es2017Builds = [
   {
-    input: 'index.ts',
+    input: './exp/index.ts',
     output: {
-      file: pkg.esm2017,
+      file: path.resolve('./exp', pkg.esm2017),
       format: 'es',
       sourcemap: true
     },
     plugins: es2017BuildPlugins,
-    external: id => deps.some(dep => id === dep || id.startsWith(`${dep}/`))
+    external: id => deps.some(dep => id === dep || id.startsWith(`${dep}/`)),
+    treeshake: {
+      moduleSideEffects: false
+    }
   }
 ];
 
+// eslint-disable-next-line import/no-default-export
 export default [...es5Builds, ...es2017Builds];
