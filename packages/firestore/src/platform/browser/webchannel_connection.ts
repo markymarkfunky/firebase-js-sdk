@@ -417,6 +417,17 @@ export class WebChannelConnection extends RestConnection {
     }, 0);
     return streamBridge;
   }
+  /**
+   * Performs an RPC request using an implementation specific networking layer.
+   */
+  protected  performRPCRequest<Req, Resp>(
+    rpcName: string,
+    url: string,
+    headers: StringMap,
+    body: Req
+  ): Promise<Resp> {
+    throw new Error('foo');
+  }
 
   // visible for testing
   makeUrl(rpcName: string): string {
