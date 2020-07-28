@@ -1,5 +1,12 @@
 # firebase
 
+## 7.17.2
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @firebase/firestore@1.16.3
+
 ## 7.17.1
 
 ### Patch Changes
