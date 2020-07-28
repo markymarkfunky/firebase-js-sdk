@@ -43,7 +43,7 @@ import {
   mapCodeFromHttpResponseErrorStatus
 } from '../../remote/rpc_error';
 import { StreamBridge } from '../../remote/stream_bridge';
-import { debugAssert, fail, hardAssert } from '../../util/assert';
+import { fail, hardAssert } from '../../util/assert';
 import { Code, FirestoreError } from '../../util/error';
 import { logDebug, logWarn } from '../../util/log';
 import { Indexable } from '../../util/misc';
@@ -54,7 +54,6 @@ import {RestConnection} from "../../remote/rest_connection";
 const LOG_TAG = 'Connection';
 
 const RPC_STREAM_SERVICE = 'google.firestore.v1.Firestore';
-const RPC_URL_VERSION = 'v1';
 
 /**
  * Maps RPC names to the corresponding REST endpoint name.
