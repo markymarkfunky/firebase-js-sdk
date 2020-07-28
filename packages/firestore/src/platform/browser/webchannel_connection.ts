@@ -428,24 +428,4 @@ export class WebChannelConnection extends RestConnection {
   ): Promise<Resp> {
     throw new Error('foo');
   }
-
-  // visible for testing
-  makeUrl(rpcName: string): string {
-    const urlRpcName = RPC_NAME_REST_MAPPING[rpcName];
-    debugAssert(
-      urlRpcName !== undefined,
-      'Unknown REST mapping for: ' + rpcName
-    );
-    return (
-      this.baseUrl +
-      '/' +
-      RPC_URL_VERSION +
-      '/projects/' +
-      this.databaseId.projectId +
-      '/databases/' +
-      this.databaseId.database +
-      '/documents:' +
-      urlRpcName
-    );
-  }
 }
