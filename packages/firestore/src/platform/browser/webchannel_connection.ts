@@ -64,11 +64,6 @@ RPC_NAME_REST_MAPPING['BatchGetDocuments'] = 'batchGet';
 RPC_NAME_REST_MAPPING['Commit'] = 'commit';
 RPC_NAME_REST_MAPPING['RunQuery'] = 'runQuery';
 
-// TODO(b/38203344): The SDK_VERSION is set independently from Firebase because
-// we are doing out-of-band releases. Once we release as part of Firebase, we
-// should use the Firebase version instead.
-const X_GOOG_API_CLIENT_VALUE = 'gl-js/ fire/' + SDK_VERSION;
-
 const XHR_TIMEOUT_SECS = 15;
 
 export class WebChannelConnection extends RestConnection {
