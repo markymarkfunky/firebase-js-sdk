@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # @firebase/performance
 
 ## 0.3.10
@@ -27,3 +28,7 @@
 ## 0.2.30
 
 - [changed] Internal transport protocol update from proto2 to proto3.
+=======
+# Unreleased
+- [changed] Internal transport protocol update from proto2 to proto3.
+>>>>>>> 48fff6ba839718a707df4485bfc175e30eda1910
